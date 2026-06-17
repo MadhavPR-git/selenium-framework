@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 import utils.ElemUtils;
 
 public class LoginPage {
@@ -13,7 +15,7 @@ public class LoginPage {
 
     By username = By.id("email");
     By password = By.id("password");
-    By submit   = By.xpath("//button[@type='submit']");
+    By submit  = By.xpath("//button[@type='submit']");
     By loginSuccess = By.xpath("//h2[text()='Login Successful']");
 
     public LoginPage(WebDriver driver){
@@ -32,12 +34,27 @@ public class LoginPage {
     }
 
     public void clickLogin(){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,500);");
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("window.scrollBy(0,500);");
 //        ((JavascriptExecutor) driver)
 //                .executeScript("arguments[0].scrollIntoView(true);", submit);
-        driver.findElement(submit).click();
+//        driver.findElement(submit).click();
+    	WebElement button = driver.findElement(submit);
+
+        System.out.println("Button displayed: " + button.isDisplayed());
+        System.out.println("Button enabled: " + button.isEnabled());
+        
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView({block:'center'});",button);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript(
+            "arguments[0].click();",
+            button
+        );
+
 //        utils.click(submit);
+        
+        
      }
 
      public void verifyLogin(){

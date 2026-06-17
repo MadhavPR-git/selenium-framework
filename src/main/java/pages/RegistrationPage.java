@@ -16,4 +16,6 @@ public class RegistrationPage {
     public void registraion(){
         driver.findElement(registrationLink).click();
     }
+    
+    
 }

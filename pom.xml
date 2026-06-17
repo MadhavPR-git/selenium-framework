@@ -20,21 +20,48 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.9.0</version>
-            <scope>test</scope>
+           
         </dependency>
-        <dependency>
+      <!--  <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.9.0</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>  -->
 
     </dependencies>
 
     <properties>
-        <maven.compiler.source>26</maven.compiler.source>
-        <maven.compiler.target>26</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    
+    <build>
+
+    <plugins>
+
+        <plugin>
+
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.2.5</version>
+
+            <configuration>
+
+                <suiteXmlFiles>
+
+                    <suiteXmlFile>testng.xml</suiteXmlFile>
+
+                </suiteXmlFiles>
+
+            </configuration>
+
+        </plugin>
+
+
+    </plugins>
+
+</build>
 
 </project>
